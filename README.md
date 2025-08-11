@@ -353,16 +353,6 @@ Azure Event Grid → HTTP Webhook → AWS Lambda → SQS → GCP Cloud Functions
 
 ---
 
-## Contributing
-
-This documentation is maintained by the Cloud Architecture team. To contribute:
-
-1. Fork this repository
-2. Create a feature branch
-3. Submit a pull request with detailed change descriptions
-4. Ensure all pricing information is current and sourced
-
----
 
 *Last updated: August 2025*
 
