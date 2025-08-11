@@ -1,54 +1,392 @@
 # CST8917 – Serverless Applications
 
-## Assignment 2 – Serverless Service Alternatives Report
+# Multi-Cloud Serverless Services Comparison
 
-**Due:** Week 15 (August 15, 2025) – Submit GitHub repository link via Brightspace by 11:59 PM  
-**Weight:** 10% of Final Grade  
-**Type:** Individual Assignment  
+## Overview
+
+This repository provides a comprehensive comparison of serverless computing services across Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP). The analysis focuses on equivalent services, features, pricing, and integration capabilities to help teams make informed decisions when migrating or adopting multi-cloud serverless architectures.
+
+## Table of Contents
+
+- [Service Mapping](#service-mapping)
+- [Detailed Comparisons](#detailed-comparisons)
+  - [Function as a Service (FaaS)](#function-as-a-service-faas)
+  - [Workflow Orchestration](#workflow-orchestration)
+  - [Event Processing](#event-processing)
+  - [Messaging Services](#messaging-services)
+- [Feature Matrix](#feature-matrix)
+- [Pricing Comparison](#pricing-comparison)
+- [Migration Considerations](#migration-considerations)
+- [Recommendations](#recommendations)
 
 ---
 
-## Objective
-In this course, we have developed and deployed serverless applications using **Microsoft Azure** services.  
-The goal of this assignment is to **broaden your cloud provider knowledge** by researching and identifying **equivalent services** in **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)** for each Azure serverless service we studied.  
-You will then **compare** these services in terms of features, triggers/bindings, integration options, monitoring, and pricing.  
+## Service Mapping
 
-You will present your findings in **Markdown format** within a **GitHub repository** to simulate real-world technical documentation practices.
+| Azure Service | AWS Equivalent | GCP Equivalent | Primary Use Case |
+|---------------|----------------|----------------|------------------|
+| Azure Functions | AWS Lambda | Google Cloud Functions | Function as a Service (FaaS) |
+| Durable Functions | AWS Step Functions | Google Cloud Workflows | Workflow orchestration and state management |
+| Azure Logic Apps | AWS Step Functions + SQS/SNS | Google Cloud Workflows + Pub/Sub | Visual workflow orchestration |
+| Azure Service Bus | Amazon SQS/SNS | Google Cloud Pub/Sub | Message queuing and pub/sub |
+| Azure Event Grid | Amazon EventBridge | Google Cloud Eventarc | Event routing and filtering |
+| Azure Event Hubs | Amazon Kinesis Data Streams | Google Cloud Pub/Sub (streaming) | Real-time data streaming |
 
 ---
 
-## Instructions
+## Detailed Comparisons
 
-### 1. Required Azure Services to Compare
-At a minimum, your report must include the following Azure services:
+### Function as a Service (FaaS)
 
-- **Azure Functions** (Triggers & Bindings)  
-- **Durable Functions** (Chaining, Orchestration, Fan-out/Fan-in)  
-- **Azure Logic Apps**  
-- **Azure Service Bus** (Queues & Topics)  
-- **Azure Event Grid**  
-- **Azure Event Hubs**  
+#### Azure Functions vs AWS Lambda vs Google Cloud Functions
 
-*(You may include additional Azure services from the course if relevant.)*
+**Azure Functions**
+- **Triggers & Bindings**: 20+ built-in triggers (HTTP, Timer, Blob, Queue, etc.)
+- **Language Support**: C#, JavaScript, Python, Java, PowerShell, TypeScript
+- **Hosting Plans**: Consumption, Premium, Dedicated (App Service Plan)
+- **Cold Start**: ~1-3 seconds (varies by plan)
+- **Max Execution Time**: 5 minutes (Consumption), 30 minutes (Premium/Dedicated)
+- **Scaling**: Automatic with Event-driven scale controller
+- **Integration**: Native Azure ecosystem integration
 
-### 2. Find AWS & GCP Equivalents
-For each Azure service:
+**AWS Lambda**
+- **Triggers**: 20+ event sources (API Gateway, S3, DynamoDB, etc.)
+- **Language Support**: Python, JavaScript, Java, C#, Go, Ruby, PowerShell
+- **Runtime Models**: On-demand, Provisioned Concurrency, Lambda@Edge
+- **Cold Start**: ~100ms-1s (varies by language and memory)
+- **Max Execution Time**: 15 minutes
+- **Scaling**: Automatic up to 10,000 concurrent executions (configurable)
+- **Integration**: Extensive AWS service integration
 
-- Identify the **closest AWS equivalent service**  
-- Identify the **closest GCP equivalent service**
+**Google Cloud Functions**
+- **Triggers**: HTTP, Cloud Storage, Pub/Sub, Firebase, etc.
+- **Language Support**: Python, JavaScript, Go, Java, .NET, Ruby, PHP
+- **Generations**: 1st gen (legacy), 2nd gen (Cloud Run-based)
+- **Cold Start**: ~1-3 seconds (1st gen), ~500ms (2nd gen)
+- **Max Execution Time**: 9 minutes (1st gen), 60 minutes (2nd gen)
+- **Scaling**: Automatic with configurable concurrency limits
+- **Integration**: Google Cloud ecosystem integration
 
-### 3. Compare the Services
-For each service, include:
+### Workflow Orchestration
 
-- **Overview** – brief description of each service  
-- **Core Features** – supported triggers, bindings, messaging/eventing capabilities  
-- **Integration Options** – how it works with other cloud services or CI/CD pipelines  
-- **Monitoring & Observability** – available tools/logging integrations  
-- **Pricing Model** – high-level cost considerations  
-- **Strengths & Weaknesses** – from a serverless architecture perspective  
+#### Durable Functions vs Step Functions vs Cloud Workflows
 
-### 4. Organize in Markdown
-- Create a `README.md` file in your GitHub repository containing your report  
-- Use **headings**, **tables**, and **bullet points** for clarity  
-- Include a **comparison table** for each service, followed by a **narrative analysis**
+**Azure Durable Functions**
+- **Patterns**: Function chaining, fan-out/fan-in, async HTTP APIs, monitoring, human interaction
+- **State Management**: Automatic state persistence and checkpointing
+- **Programming Model**: Code-based orchestration (C#, JavaScript, Python)
+- **Pricing**: Pay-per-execution + storage costs
+- **Monitoring**: Application Insights integration
+- **Scalability**: Inherits from Azure Functions scaling
 
+**AWS Step Functions**
+- **Workflow Types**: Standard (long-running), Express (high-volume, short-duration)
+- **State Types**: Task, Choice, Parallel, Map, Pass, Wait, Succeed, Fail
+- **Definition Language**: Amazon States Language (ASL) JSON-based
+- **Pricing**: Pay-per-state-transition model
+- **Monitoring**: CloudWatch and X-Ray integration
+- **Visual Design**: Workflow Studio for visual editing
+
+**Google Cloud Workflows**
+- **Definition**: YAML-based workflow definition
+- **Connectors**: 100+ pre-built connectors to Google Cloud services
+- **Error Handling**: Built-in retry policies and error handling
+- **Pricing**: Pay-per-step execution
+- **Monitoring**: Cloud Logging and Cloud Monitoring integration
+- **Security**: IAM-based access control
+
+#### Azure Logic Apps vs AWS EventBridge + Step Functions
+
+**Azure Logic Apps**
+- **Connectors**: 400+ built-in connectors (SaaS, on-premises, Azure services)
+- **Design**: Visual designer with drag-and-drop interface
+- **Triggers**: 50+ trigger types (HTTP, schedule, event-based)
+- **Pricing**: Pay-per-action execution
+- **Integration**: Hybrid connectivity with on-premises data gateway
+- **Templates**: Pre-built templates for common scenarios
+
+**AWS EventBridge + Step Functions**
+- **EventBridge**: Event bus service with 90+ SaaS integrations
+- **Event Patterns**: JSON-based event filtering and routing
+- **Custom Events**: Support for custom applications and SaaS providers
+- **Archive/Replay**: Event replay capabilities
+- **Cross-Region**: Global event replication support
+
+### Event Processing
+
+#### Azure Event Grid vs Amazon EventBridge vs Google Cloud Eventarc
+
+**Azure Event Grid**
+- **Event Sources**: 30+ Azure services + custom sources
+- **Event Filtering**: Advanced filtering with boolean operators
+- **Delivery Guarantees**: At-least-once delivery with dead-lettering
+- **Pricing**: Pay-per-event ($0.60 per million events)
+- **Schema Registry**: CloudEvents schema support
+- **Security**: Managed identity and key-based authentication
+
+**Amazon EventBridge**
+- **Event Sources**: 90+ AWS services + SaaS providers
+- **Custom Buses**: Multiple event buses per account
+- **Schema Discovery**: Automatic schema discovery and registry
+- **Pricing**: Pay-per-event ($1.00 per million events)
+- **Archive**: Long-term event storage and replay
+- **Global Replication**: Cross-region event replication
+
+**Google Cloud Eventarc**
+- **Event Sources**: Google Cloud services + custom sources
+- **Cloud Events**: Native CloudEvents standard support
+- **Destinations**: Cloud Run, Cloud Functions, GKE, Workflows
+- **Pricing**: No additional cost (pay for underlying compute)
+- **Audit Events**: Integration with Cloud Audit Logs
+- **Multi-Region**: Global event routing capabilities
+
+### Messaging Services
+
+#### Azure Service Bus vs Amazon SQS/SNS vs Google Cloud Pub/Sub
+
+**Azure Service Bus**
+- **Queue Types**: Basic queues and topics/subscriptions
+- **Message Features**: Sessions, duplicate detection, dead-lettering
+- **Max Message Size**: 1MB (Premium: 100MB)
+- **Pricing**: Pay-per-operation + throughput units
+- **FIFO**: Guaranteed message ordering with sessions
+- **Integration**: Native .NET SDK and REST API
+
+**Amazon SQS/SNS**
+- **SQS Types**: Standard (best-effort ordering) and FIFO queues
+- **SNS**: Fan-out messaging to multiple subscribers
+- **Max Message Size**: 256KB (SQS), 256KB (SNS)
+- **Pricing**: Pay-per-request model
+- **Delivery**: At-least-once delivery guarantee
+- **Integration**: Extensive AWS service integration
+
+**Google Cloud Pub/Sub**
+- **Message Ordering**: Optional message ordering with keys
+- **Delivery Types**: Pull and push subscription models
+- **Max Message Size**: 10MB
+- **Pricing**: Pay-per-message + throughput
+- **Global**: Multi-region message replication
+- **Integration**: Native Google Cloud service integration
+
+#### Azure Event Hubs vs Amazon Kinesis vs Google Cloud Pub/Sub (Streaming)
+
+**Azure Event Hubs**
+- **Throughput Units**: Configurable ingress/egress capacity
+- **Partitions**: Up to 1024 partitions per event hub
+- **Retention**: 1-7 days (Standard), 90 days (Dedicated)
+- **Pricing**: Pay-per-throughput unit + ingress events
+- **Capture**: Automatic data capture to storage
+- **Kafka**: Apache Kafka protocol support
+
+**Amazon Kinesis Data Streams**
+- **Shards**: Base throughput unit (1MB/sec ingress, 2MB/sec egress)
+- **Retention**: 24 hours to 365 days
+- **Scaling**: Manual or automatic shard scaling
+- **Pricing**: Pay-per-shard-hour + data volume
+- **Integration**: Native AWS analytics service integration
+- **Enhanced Fan-out**: Dedicated throughput per consumer
+
+**Google Cloud Pub/Sub (Streaming Mode)**
+- **Throughput**: Automatic scaling without manual configuration
+- **Retention**: Up to 7 days message retention
+- **Ordering**: Per-key message ordering support
+- **Pricing**: Pay-per-message model
+- **Seek**: Message replay by timestamp
+- **BigQuery**: Direct integration for analytics
+
+---
+
+## Feature Matrix
+
+### Core Function Features
+
+| Feature | Azure Functions | AWS Lambda | Google Cloud Functions |
+|---------|----------------|------------|----------------------|
+| **Languages** | C#, JS, Python, Java, PS | Python, JS, Java, C#, Go, Ruby | Python, JS, Go, Java, .NET |
+| **Max Memory** | 1.5GB (Consumption) / 14GB (Premium) | 10GB | 8GB (2nd gen) |
+| **Max Timeout** | 5min (Consumption) / 30min (Premium) | 15 minutes | 60 minutes (2nd gen) |
+| **Cold Start** | 1-3 seconds | 100ms-1s | 500ms-3s |
+| **Concurrency** | 200 (Consumption) / 500+ (Premium) | 10,000 (configurable) | 1,000 (2nd gen) |
+| **VPC Support** | Virtual Network Integration | VPC configurations | VPC connector (2nd gen) |
+| **Local Development** | Azure Functions Core Tools | SAM CLI / Serverless | Functions Framework |
+
+### Orchestration Features
+
+| Feature | Durable Functions | AWS Step Functions | Cloud Workflows |
+|---------|------------------|-------------------|-----------------|
+| **Definition** | Code-based (C#, JS, Python) | JSON (ASL) | YAML |
+| **Visual Editor** | Limited (VS Code extension) | Workflow Studio | Limited |
+| **Max Duration** | Unlimited (with checkpointing) | 1 year | 1 year |
+| **State Management** | Automatic | JSON state passing | Variable-based |
+| **Error Handling** | Try-catch in code | Built-in retry/catch states | Built-in retry policies |
+| **Human Interaction** | Built-in approval patterns | Manual approval integration | External task patterns |
+
+---
+
+## Pricing Comparison
+
+### Function Execution Costs (as of 2024)
+
+| Provider | Per Million Requests | Per GB-Second | Free Tier |
+|----------|---------------------|---------------|-----------|
+| **Azure Functions** | $0.20 | $0.000016 | 1M requests + 400K GB-s |
+| **AWS Lambda** | $0.20 | $0.0000166667 | 1M requests + 400K GB-s |
+| **Google Cloud Functions** | $0.40 | $0.0000025 (1st gen) / $0.0000024 (2nd gen) | 2M invocations + 400K GB-s |
+
+### Workflow Orchestration Costs
+
+| Provider | Pricing Model | Cost Structure |
+|----------|---------------|----------------|
+| **Durable Functions** | Function execution + storage | Same as Azure Functions + $0.05/GB storage |
+| **AWS Step Functions** | Per state transition | Standard: $25 per million transitions<br>Express: $1 per million requests |
+| **Cloud Workflows** | Per step execution | $0.01 per 1,000 internal steps |
+
+### Event Processing Costs
+
+| Provider | Service | Pricing |
+|----------|---------|---------|
+| **Azure** | Event Grid | $0.60 per million events |
+| **AWS** | EventBridge | $1.00 per million events |
+| **Google** | Eventarc | No additional cost (pay for compute) |
+
+---
+
+## Migration Considerations
+
+### From Azure to AWS
+
+**Functions to Lambda**
+- Refactor binding attributes to event sources
+- Update dependency injection patterns
+- Modify logging from ILogger to CloudWatch
+- Convert ARM templates to CloudFormation/SAM
+
+**Durable Functions to Step Functions**
+- Convert C#/JS orchestrators to ASL JSON
+- Redesign state management approach
+- Implement error handling in state definitions
+- Migrate checkpointing logic to state machines
+
+### From Azure to GCP
+
+**Functions to Cloud Functions**
+- Update trigger configurations
+- Migrate to Cloud Functions Framework
+- Convert to YAML deployment descriptors
+- Update monitoring from App Insights to Cloud Monitoring
+
+**Event Grid to Eventarc**
+- Convert event schemas to CloudEvents format
+- Update filtering logic
+- Migrate webhook endpoints
+- Reconfigure event routing rules
+
+### Cross-Platform Patterns
+
+**Multi-Cloud Event Architecture**
+```yaml
+# Example: Cross-cloud event processing
+Azure Event Grid → HTTP Webhook → AWS Lambda → SQS → GCP Cloud Functions
+```
+
+**Hybrid Orchestration**
+- Use REST APIs as integration points
+- Implement compensating transaction patterns
+- Design idempotent operations
+- Maintain event sourcing for audit trails
+
+---
+
+## Recommendations
+
+### When to Choose Azure
+- **Enterprise Integration**: Strong Office 365 and on-premises integration needs
+- **Hybrid Scenarios**: Existing Windows/.NET infrastructure
+- **Logic Apps**: Need for visual workflow design with extensive connectors
+- **Cost Efficiency**: Consistent pricing model across services
+
+### When to Choose AWS
+- **Ecosystem Maturity**: Most comprehensive serverless ecosystem
+- **Advanced Patterns**: Complex event-driven architectures
+- **Global Scale**: Multi-region deployments with edge computing
+- **Analytics Integration**: Strong integration with AWS analytics services
+
+### When to Choose GCP
+- **Data Analytics**: Integration with BigQuery and ML services
+- **Container-First**: Cloud Run-based functions (2nd gen)
+- **Simplicity**: Cleaner pricing model for events
+- **Open Standards**: Strong CloudEvents and Knative support
+
+### Multi-Cloud Strategy
+- **Event-Driven Integration**: Use CloudEvents standard across platforms
+- **API Gateway Pattern**: Abstract provider-specific implementations
+- **Monitoring**: Implement centralized observability (e.g., Datadog, New Relic)
+- **IaC Tools**: Use Terraform for consistent infrastructure deployment
+
+---
+
+## Best Practices
+
+### Security
+- Enable managed identities/IAM roles instead of connection strings
+- Implement least-privilege access principles
+- Use secrets management services (Key Vault, Secrets Manager, Secret Manager)
+- Enable audit logging and monitoring
+
+### Performance
+- Optimize memory allocation vs cost trade-offs
+- Implement connection pooling and caching strategies
+- Use provisioned concurrency for predictable workloads
+- Monitor and optimize cold start performance
+
+### Reliability
+- Implement circuit breaker patterns
+- Design for idempotency
+- Use dead letter queues for failed messages
+- Implement proper retry policies with exponential backoff
+
+### Cost Optimization
+- Right-size memory allocation based on profiling
+- Use consumption-based pricing for variable workloads
+- Implement function lifecycle management
+- Monitor and alert on cost anomalies
+
+---
+
+## Contributing
+
+This documentation is maintained by the Cloud Architecture team. To contribute:
+
+1. Fork this repository
+2. Create a feature branch
+3. Submit a pull request with detailed change descriptions
+4. Ensure all pricing information is current and sourced
+
+---
+
+*Last updated: August 2025*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------
