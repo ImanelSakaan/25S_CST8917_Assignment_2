@@ -13,7 +13,8 @@ This repository provides a comprehensive comparison of serverless computing serv
 
 - [Service Mapping](#service-mapping)
 - [Core Features](#core-features)
-- [Integration and Monitoring](#integration-monitoring)
+- [Integration and Monitoring](#integration-and-monitoring)
+- 
 - [Detailed Comparisons](#detailed-comparisons)
   - [Function as a Service (FaaS)](#function-as-a-service-faas)
   - [Workflow Orchestration](#workflow-orchestration)
@@ -50,6 +51,7 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 | Monitoring | Azure Monitor, Application Insights | CloudWatch, X-Ray | Cloud Logging, Cloud Trace, Cloud Monitoring |
 
 ---
+
 ## Integration and Monitoring
 
 | Azure Service | AWS Equivalent | GCP Equivalent | Integration Options | Monitoring & Observability |
