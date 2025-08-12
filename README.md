@@ -22,7 +22,6 @@ This repository provides a comprehensive comparison of serverless computing serv
   - [Event Processing](#event-processing)
   - [Messaging Services](#messaging-services)
 - [Feature Matrix](#feature-matrix)
-- [Migration Considerations](#migration-considerations)
 - [Recommendations](#recommendations)
 
 ---
@@ -292,53 +291,6 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 
 ---
 
-
-
-## Migration Considerations
-
-### From Azure to AWS
-
-**Functions to Lambda**
-- Refactor binding attributes to event sources
-- Update dependency injection patterns
-- Modify logging from ILogger to CloudWatch
-- Convert ARM templates to CloudFormation/SAM
-
-**Durable Functions to Step Functions**
-- Convert C#/JS orchestrators to ASL JSON
-- Redesign state management approach
-- Implement error handling in state definitions
-- Migrate checkpointing logic to state machines
-
-### From Azure to GCP
-
-**Functions to Cloud Functions**
-- Update trigger configurations
-- Migrate to Cloud Functions Framework
-- Convert to YAML deployment descriptors
-- Update monitoring from App Insights to Cloud Monitoring
-
-**Event Grid to Eventarc**
-- Convert event schemas to CloudEvents format
-- Update filtering logic
-- Migrate webhook endpoints
-- Reconfigure event routing rules
-
-### Cross-Platform Patterns
-
-**Multi-Cloud Event Architecture**
-```yaml
-# Example: Cross-cloud event processing
-Azure Event Grid → HTTP Webhook → AWS Lambda → SQS → GCP Cloud Functions
-```
-
-**Hybrid Orchestration**
-- Use REST APIs as integration points
-- Implement compensating transaction patterns
-- Design idempotent operations
-- Maintain event sourcing for audit trails
-
----
 
 ## Recommendations
 
