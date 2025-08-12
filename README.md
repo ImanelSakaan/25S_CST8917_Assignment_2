@@ -21,8 +21,8 @@ This repository provides a comprehensive comparison of serverless computing serv
   - [Workflow Orchestration](#workflow-orchestration)
   - [Event Processing](#event-processing)
   - [Messaging Services](#messaging-services)
-- [Feature Matrix](#feature-matrix)
-- [Recommendations](#recommendations)
+  - [Feature Matrix](#feature-matrix)
+  - [Recommendations](#recommendations)
 
 ---
 
