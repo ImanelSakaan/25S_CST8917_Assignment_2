@@ -27,7 +27,7 @@ This repository provides a comprehensive comparison of serverless computing serv
 
 ---
 
-## 🔄 Service Mapping
+## Service Mapping
 
 | Azure Service | AWS Equivalent | GCP Equivalent | Primary Use Case |
 |---------------|----------------|----------------|------------------|
@@ -39,7 +39,7 @@ This repository provides a comprehensive comparison of serverless computing serv
 | Azure Event Hubs | Amazon Kinesis Data Streams | Google Cloud Pub/Sub (streaming) | Real-time data streaming |
 
 ---
-## ☸️ Core Features
+## Core Features
 Comparison of serverless function services between Azure, AWS, and GCP.
 
 | Feature | Azure Functions | AWS Lambda | Google Cloud Functions |
@@ -52,7 +52,7 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 
 ---
 
-## 🧩 Integration and Monitoring
+## Integration and Monitoring
 
 | Azure Service | AWS Equivalent | GCP Equivalent | Integration Options | Monitoring & Observability |
 |---------------|---------------|----------------|----------------------|----------------------------|
@@ -64,7 +64,7 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 | **Azure Event Hubs** | Amazon Kinesis Data Streams | Pub/Sub | **Azure**: Integrates with Stream Analytics, Functions, Databricks. **AWS**: Kinesis with Lambda, Firehose, analytics services. **GCP**: Pub/Sub with Dataflow, Functions, BigQuery. | **Azure**: Azure Monitor metrics, capture logs. **AWS**: CloudWatch metrics for shard usage, throughput. **GCP**: Cloud Monitoring metrics for Pub/Sub topics. |
 
 ---
-## 🎯 Pricing Comparison
+## Pricing Comparison
 
 ### Function Execution Costs (as of 2024)
 
@@ -91,7 +91,7 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 | **Google** | Eventarc | No additional cost (pay for compute) |
 
 ---
-## 📊 Strengths and Weaknesses
+## Strengths and Weaknesses
 
 | Cloud Provider | Strengths | Weaknesses |
 | --- | --- | --- |
@@ -102,7 +102,7 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 
 ---
 
-## 🧪 Detailed Comparisons
+## Detailed Comparisons
 
 ### Function as a Service (FaaS)
 
