@@ -12,12 +12,12 @@ This repository provides a comprehensive comparison of serverless computing serv
 ## Table of Contents
 
 - [Service Mapping](#service-mapping)
+- [Core Features](#core-features)
 - [Detailed Comparisons](#detailed-comparisons)
   - [Function as a Service (FaaS)](#function-as-a-service-faas)
   - [Workflow Orchestration](#workflow-orchestration)
   - [Event Processing](#event-processing)
   - [Messaging Services](#messaging-services)
-- [Core Features](#core-features)
 - [Feature Matrix](#feature-matrix)
 - [Pricing Comparison](#pricing-comparison)
 - [Migration Considerations](#migration-considerations)
