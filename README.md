@@ -14,6 +14,7 @@ This repository provides a comprehensive comparison of serverless computing serv
 - [Service Mapping](#service-mapping)
 - [Core Features](#core-features)
 - [Integration and Monitoring](#integration-and-monitoring)
+- [Pricing Comparison](#pricing-comparison)
 - 
 - [Detailed Comparisons](#detailed-comparisons)
   - [Function as a Service (FaaS)](#function-as-a-service-faas)
@@ -21,7 +22,7 @@ This repository provides a comprehensive comparison of serverless computing serv
   - [Event Processing](#event-processing)
   - [Messaging Services](#messaging-services)
 - [Feature Matrix](#feature-matrix)
-- [Pricing Comparison](#pricing-comparison)
+
 - [Migration Considerations](#migration-considerations)
 - [Recommendations](#recommendations)
 
@@ -64,7 +65,33 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 | **Azure Event Hubs** | Amazon Kinesis Data Streams | Pub/Sub | **Azure**: Integrates with Stream Analytics, Functions, Databricks. **AWS**: Kinesis with Lambda, Firehose, analytics services. **GCP**: Pub/Sub with Dataflow, Functions, BigQuery. | **Azure**: Azure Monitor metrics, capture logs. **AWS**: CloudWatch metrics for shard usage, throughput. **GCP**: Cloud Monitoring metrics for Pub/Sub topics. |
 
 ---
+## Pricing Comparison
 
+### Function Execution Costs (as of 2024)
+
+| Provider | Per Million Requests | Per GB-Second | Free Tier |
+|----------|---------------------|---------------|-----------|
+| **Azure Functions** | $0.20 | $0.000016 | 1M requests + 400K GB-s |
+| **AWS Lambda** | $0.20 | $0.0000166667 | 1M requests + 400K GB-s |
+| **Google Cloud Functions** | $0.40 | $0.0000025 (1st gen) / $0.0000024 (2nd gen) | 2M invocations + 400K GB-s |
+
+### Workflow Orchestration Costs
+
+| Provider | Pricing Model | Cost Structure |
+|----------|---------------|----------------|
+| **Durable Functions** | Function execution + storage | Same as Azure Functions + $0.05/GB storage |
+| **AWS Step Functions** | Per state transition | Standard: $25 per million transitions<br>Express: $1 per million requests |
+| **Cloud Workflows** | Per step execution | $0.01 per 1,000 internal steps |
+
+### Event Processing Costs
+
+| Provider | Service | Pricing |
+|----------|---------|---------|
+| **Azure** | Event Grid | $0.60 per million events |
+| **AWS** | EventBridge | $1.00 per million events |
+| **Google** | Eventarc | No additional cost (pay for compute) |
+
+---
 
 
 
@@ -258,33 +285,7 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 
 ---
 
-## Pricing Comparison
 
-### Function Execution Costs (as of 2024)
-
-| Provider | Per Million Requests | Per GB-Second | Free Tier |
-|----------|---------------------|---------------|-----------|
-| **Azure Functions** | $0.20 | $0.000016 | 1M requests + 400K GB-s |
-| **AWS Lambda** | $0.20 | $0.0000166667 | 1M requests + 400K GB-s |
-| **Google Cloud Functions** | $0.40 | $0.0000025 (1st gen) / $0.0000024 (2nd gen) | 2M invocations + 400K GB-s |
-
-### Workflow Orchestration Costs
-
-| Provider | Pricing Model | Cost Structure |
-|----------|---------------|----------------|
-| **Durable Functions** | Function execution + storage | Same as Azure Functions + $0.05/GB storage |
-| **AWS Step Functions** | Per state transition | Standard: $25 per million transitions<br>Express: $1 per million requests |
-| **Cloud Workflows** | Per step execution | $0.01 per 1,000 internal steps |
-
-### Event Processing Costs
-
-| Provider | Service | Pricing |
-|----------|---------|---------|
-| **Azure** | Event Grid | $0.60 per million events |
-| **AWS** | EventBridge | $1.00 per million events |
-| **Google** | Eventarc | No additional cost (pay for compute) |
-
----
 
 ## Migration Considerations
 
