@@ -15,6 +15,7 @@ This repository provides a comprehensive comparison of serverless computing serv
 - [Core Features](#core-features)
 - [Integration and Monitoring](#integration-and-monitoring)
 - [Pricing Comparison](#pricing-comparison)
+- [Strengths and Weaknesses](#strengths-and-weaknesses)
 - 
 - [Detailed Comparisons](#detailed-comparisons)
   - [Function as a Service (FaaS)](#function-as-a-service-faas)
@@ -92,8 +93,16 @@ Comparison of serverless function services between Azure, AWS, and GCP.
 | **Google** | Eventarc | No additional cost (pay for compute) |
 
 ---
+## Strengths and Weaknesses
+
+| Cloud Provider | Strengths | Weaknesses |
+| --- | --- | --- |
+| **Azure** | - Tight integration with Microsoft ecosystem <br> - Rich developer tooling <br> - Durable Functions built-in orchestration <br> - Extensive triggers/bindings | - Smaller global footprint <br> - Steeper learning curve for non-MS devs <br> - Pricing complexity for orchestration |
+| **AWS** | - Largest global footprint <br> - Wide event-source integration <br> - Mature monitoring & observability | - Vendor lock-in risk <br> - Cold start latency <br> - Orchestration requires Step Functions |
+| **GCP** | - Strong data & AI/ML integration <br> - Simple deployment <br> - Competitive pricing | - Fewer regions <br> - Less mature event routing <br> - Historically fewer triggers |
 
 
+---
 
 ## Detailed Comparisons
 
