@@ -1,6 +1,6 @@
 # Serverless Functions Comparison
 
-## Overview
+## Core Features
 Comparison of serverless function services between Azure, AWS, and GCP.
 
 | Feature | Azure Functions | AWS Lambda | Google Cloud Functions |
