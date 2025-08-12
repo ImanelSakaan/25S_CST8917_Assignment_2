@@ -17,6 +17,7 @@ This repository provides a comprehensive comparison of serverless computing serv
   - [Workflow Orchestration](#workflow-orchestration)
   - [Event Processing](#event-processing)
   - [Messaging Services](#messaging-services)
+- [Core Features](#core-features)
 - [Feature Matrix](#feature-matrix)
 - [Pricing Comparison](#pricing-comparison)
 - [Migration Considerations](#migration-considerations)
@@ -196,6 +197,18 @@ This repository provides a comprehensive comparison of serverless computing serv
 - **Pricing**: Pay-per-message model
 - **Seek**: Message replay by timestamp
 - **BigQuery**: Direct integration for analytics
+
+---
+## Core Features
+Comparison of serverless function services between Azure, AWS, and GCP.
+
+| Feature | Azure Functions | AWS Lambda | Google Cloud Functions |
+| --- | --- | --- | --- |
+| Trigger Types | HTTP, Timer, Blob, Queue, Event Grid, Service Bus, Cosmos DB | S3, DynamoDB, Kinesis, API Gateway, EventBridge | HTTP, Cloud Pub/Sub, Cloud Storage, Firestore, Eventarc |
+| Bindings | Input & Output bindings for easy integration | No bindings, manual integration needed | Minimal bindings, event-based integration |
+| Orchestration | Durable Functions | Step Functions | Workflows |
+| Languages | C#, JavaScript, Python, Java, PowerShell, Go, etc. | Node.js, Python, Java, C#, Go, Ruby, custom runtimes | Node.js, Python, Go, Java, .NET |
+| Monitoring | Azure Monitor, Application Insights | CloudWatch, X-Ray | Cloud Logging, Cloud Trace, Cloud Monitoring |
 
 ---
 
